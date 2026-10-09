@@ -1,4 +1,17 @@
+/*
+    TaskFlow stylesheet. Single file, no preprocessor, organised in document
+    order with the responsive overrides and animations last.
+
+    Palette:   primary #667eea -> #764ba2, success #48bb78, edit #3182ce,
+               danger #e53e3e, text #2d3748 / #4a5568 / #718096
+    Elevation: 20px header, 10px cards, 4px hover - shadow size encodes depth
+    Radius:    20px containers, 16px sections, 12px controls
+    Motion:    one shared 0.3s ease, and transforms rather than margins so
+               hovers never reflow the layout
+*/
+
 /* Reset and Base Styles */
+/* border-box so declared padding sits inside the width the flex/grid rules assume */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +27,8 @@ body {
 }
 
 /* Container */
+/* Sticky footer: flex column here plus `.main { flex: 1 }` keeps the footer
+   at the bottom even with an empty task list */
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -29,6 +44,8 @@ body {
     margin-bottom: 3rem;
 }
 
+/* Frosted panel shared by header, input, list and stats: 0.95 rather than
+   solid white lets the gradient show through */
 .header-content {
     background: rgba(255, 255, 255, 0.95);
     padding: 2rem;
@@ -89,6 +106,8 @@ body {
     background: #f8fafc;
 }
 
+/* The default outline is removed, so it has to be replaced - this ring is
+   the keyboard focus indicator */
 .task-input:focus {
     outline: none;
     border-color: #667eea;
@@ -181,12 +200,15 @@ body {
     cursor: pointer;
 }
 
+/* Sideways, not up: a vertical shift would make neighbouring rows jitter */
 .task-item:hover {
     transform: translateX(4px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-color: #cbd5e0;
 }
 
+/* Completion is shown three ways (tint, border, opacity) plus the
+   line-through below, so it reads without colour vision */
 .task-item.completed {
     background: #f0fff4;
     border-color: #9ae6b4;
@@ -200,6 +222,8 @@ body {
     flex: 1;
 }
 
+/* Styled div, not a real checkbox: restyles cleanly but loses the native
+   focus ring, Space-to-toggle and screen-reader role */
 .task-checkbox {
     width: 20px;
     height: 20px;
@@ -294,6 +318,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* auto-fit re-wraps the cards unaided; the 480px rule only forces one column */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -332,6 +357,7 @@ body {
 }
 
 /* Responsive Design */
+/* 768px: the input row cannot fit a field and button side by side, so it stacks */
 @media (max-width: 768px) {
     .container {
         padding: 1rem 0.5rem;
