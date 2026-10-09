@@ -1,14 +1,32 @@
 <!DOCTYPE html>
+<!--
+    TaskFlow - Task Management Application
+    ======================================
+    Single-page application. There is no build step and no framework: this file
+    is opened directly in the browser, styled by styles/main.css and driven by
+    scripts/app.js.
+
+    Element IDs below are the contract with scripts/app.js. The TaskFlow class
+    looks each one up with document.getElementById(), so renaming an id here
+    breaks the script silently. Classes are styling hooks only.
+-->
 <html lang="en">
 <head>
+    <!-- UTF-8 so the emoji characters used as icons render correctly -->
     <meta charset="UTF-8">
+    <!-- Required for the mobile breakpoints in main.css to take effect -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskFlow - Task Management App</title>
+    <!-- Own stylesheet first, then the webfont, so our rules win on equal specificity -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- Inter from Google Fonts; display=swap shows fallback text while the font loads -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Centred, max-width wrapper that keeps all three sections on one column -->
     <div class="container">
+
+        <!-- ===== Header: static branding, no scripted behaviour ===== -->
         <header class="header">
             <div class="header-content">
                 <h1 class="app-title">
@@ -20,9 +38,16 @@
         </header>
 
         <main class="main">
+
+            <!-- ===== Task input: the only place new tasks are created ===== -->
             <div class="task-input-section">
                 <div class="input-container">
+                    <!--
+                        #taskInput - read by addTask(); also listens for the Enter
+                        key so the task can be submitted without the button.
+                    -->
                     <input type="text" id="taskInput" placeholder="What needs to be done?" class="task-input">
+                    <!-- #addTaskBtn - click handler bound in bindEvents() -->
                     <button id="addTaskBtn" class="add-btn">
                         <span class="add-icon">+</span>
                         Add Task
@@ -30,14 +55,25 @@
                 </div>
             </div>
 
+            <!-- ===== Task list: rendered from the tasks array on every change ===== -->
             <div class="tasks-section">
                 <div class="tasks-header">
                     <h2>Your Tasks</h2>
+                    <!-- #taskCount - headline counter, updated by updateStats() -->
                     <span id="taskCount" class="task-count">0 tasks</span>
                 </div>
+                <!--
+                    #tasksList - renderTasks() replaces this element's innerHTML
+                    wholesale, so anything written here by hand is discarded on
+                    the first render. Task text is escaped first (escapeHtml).
+                -->
                 <div id="tasksList" class="tasks-list">
                     <!-- Tasks will be dynamically added here -->
                 </div>
+                <!--
+                    #emptyState - placeholder shown only while there are no tasks.
+                    renderTasks() toggles its display between 'block' and 'none'.
+                -->
                 <div id="emptyState" class="empty-state">
                     <div class="empty-icon">✨</div>
                     <h3>No tasks yet</h3>
@@ -45,17 +81,22 @@
                 </div>
             </div>
 
+            <!-- ===== Statistics: three derived counters, never edited by hand ===== -->
             <div class="stats-section">
+                <!-- CSS Grid; collapses to a single column on narrow screens -->
                 <div class="stats-grid">
                     <div class="stat-card">
+                        <!-- #totalTasks - tasks.length -->
                         <span class="stat-number" id="totalTasks">0</span>
                         <span class="stat-label">Total Tasks</span>
                     </div>
                     <div class="stat-card">
+                        <!-- #completedTasks - count of tasks where completed === true -->
                         <span class="stat-number" id="completedTasks">0</span>
                         <span class="stat-label">Completed</span>
                     </div>
                     <div class="stat-card">
+                        <!-- #pendingTasks - total minus completed -->
                         <span class="stat-number" id="pendingTasks">0</span>
                         <span class="stat-label">Pending</span>
                     </div>
@@ -68,6 +109,11 @@
         </footer>
     </div>
 
+    <!--
+        Loaded last, without defer, so the DOM above already exists when the
+        script parses. app.js still waits for DOMContentLoaded before it
+        instantiates TaskFlow.
+    -->
     <script src="scripts/app.js"></script>
 </body>
 </html>
