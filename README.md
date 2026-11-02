@@ -417,3 +417,5 @@ This project is perfect for learning Git version control:
    - Your live app will be available at your GitHub Pages URL
 
 Ready to start your DevOps journey with TaskFlow! 🚀
+
+Issue templates for bug reports and feature requests are available when opening a new issue.
