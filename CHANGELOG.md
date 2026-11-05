@@ -11,10 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-05
+
+Enhanced task management release.
+
 ### Added
 - Task priority system with High, Medium and Low levels, priority badges,
   sorting and filtering ([#10], [#20])
 - Due date system ([#12])
+- Task categories with colour-coded badges and category filtering ([#11], [#15])
+- Search tasks by text ([#13], [#14])
+- Filter tasks by status: All, Pending and Completed ([#13], [#14])
+
+### Improved
+- Combined search, status and category filtering.
+- Improved task management and usability.
 
 ## [1.1.0] - 2026-10-23
 
@@ -86,7 +97,8 @@ behaviour ([#7]):
 - `exportTasks()` had no error handling, and revoked its object URL
   immediately after `click()`, which can cancel the download
 
-[Unreleased]: https://github.com/thomas-more-devops/taskflow-10-IADI3/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/thomas-more-devops/taskflow-10-IADI3/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/thomas-more-devops/taskflow-10-IADI3/releases/tag/v2.0.0
 [1.1.0]: https://github.com/thomas-more-devops/taskflow-10-IADI3/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/thomas-more-devops/taskflow-10-IADI3/releases/tag/v1.0.0
 

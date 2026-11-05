@@ -1,9 +1,10 @@
-# TaskFlow - Task Management Application
+TaskFlow - Task Management Application
 
-> A modern, responsive task management app built with HTML, CSS, and JavaScript
+A modern, responsive task management app built with HTML, CSS, and JavaScript.
 
-## 🚀 Live Demo
-**Try TaskFlow now:** [https://thomas-more-devops.github.io/taskflow-10-IADI3](https://thomas-more-devops.github.io/taskflow-10-IADI3)
+🚀 Live Demo
+
+Try TaskFlow now: https://thomas-more-devops.github.io/taskflow-10-IADI3
 
 ## 📊 Project Status
 ![TaskFlow](https://img.shields.io/badge/TaskFlow-v1.1.0-blue.svg)
@@ -15,407 +16,468 @@
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=flat&logo=javascript&logoColor=%23F7DF1E)
 
-## 🎓 Course Context
-This project is part of the **Bachelor International Business Management - Data Science, Protection & Security** course, **Week 2: Git Fundamentals**. It demonstrates:
-- Modern web development practices
-- Git workflow and collaboration
-- Professional project documentation
-- Responsive design principles
-- Team-based software development
+🎓 Course Context
 
-## 🚀 Features
+This project is part of the Bachelor International Business Management - Data Science, Protection & Security course at Thomas More University of Applied Sciences.
 
-- ✅ **Add Tasks**: Create new tasks with a simple, intuitive interface
-- ✅ **Mark Complete**: Check off completed tasks with satisfying animations
-- ✅ **Edit Tasks**: Modify task descriptions inline
-- ✅ **Delete Tasks**: Remove tasks you no longer need
-- ✅ **Persistent Storage**: Tasks are saved locally in your browser
-- ✅ **Task Statistics**: View your productivity metrics
-- ✅ **Responsive Design**: Works beautifully on desktop, tablet, and mobile
-- ✅ **Modern UI**: Clean, professional interface with smooth animations
+It demonstrates:
 
-## 🛠️ Technologies Used
+* Modern web development practices
+* Git workflow and collaboration
+* Professional project documentation
+* Responsive design principles
+* Continuous Integration using GitHub Actions
+* Team-based software development
 
-- **HTML5**: Semantic markup and modern web standards
-- **CSS3**: Flexbox, Grid, custom properties, and animations
-- **JavaScript ES6+**: Classes, modules, and modern syntax
-- **Local Storage API**: Client-side data persistence
-- **Google Fonts**: Inter font family for typography
+🚀 Features
 
-## 📱 Screenshots
+Core Task Management
 
-### Desktop View
-*Professional task management interface with clean design*
+* ✅ Add Tasks: Create new tasks with a simple, intuitive interface.
+* ✅ Mark Complete: Check off completed tasks.
+* ✅ Edit Tasks: Modify existing task descriptions.
+* ✅ Delete Tasks: Remove tasks you no longer need.
+* ✅ Persistent Storage: Tasks are saved locally in your browser.
+* ✅ Task Statistics: View total, completed, and pending tasks.
+* ✅ Responsive Design: Works on desktop, tablet, and mobile devices.
+* ✅ Modern UI: Clean interface with smooth animations.
 
-### Mobile View
-*Fully responsive design that works on all devices*
+Enhanced Task Management - v2.0.0
 
-## 🏃 Quick Start
+* ✅ Task Categories: Organize tasks into categories such as Work, Personal, and Shopping.
+* ✅ Priority Levels: Assign High, Medium, or Low priority to tasks.
+* ✅ Due Dates: Set deadlines for individual tasks.
+* ✅ Search Tasks: Find tasks by searching their descriptions.
+* ✅ Status Filtering: Filter tasks by All, Pending, or Completed.
+* ✅ Category Filtering: Display tasks belonging to selected categories.
+* ✅ Combined Filtering: Combine search and filters to find specific tasks.
 
-1. **Clone or download** this repository
-2. **Open** `index.html` in your web browser
-3. **Start managing** your tasks immediately!
+🛠️ Technologies Used
 
-No build process, no dependencies, no setup required - just open and use!
+* HTML5: Semantic markup and modern web standards.
+* CSS3: Flexbox, Grid, custom properties, and animations.
+* JavaScript ES6+: Classes, modern syntax, and application logic.
+* Local Storage API: Client-side data persistence.
+* Git: Version control and collaboration.
+* GitHub: Repository hosting and project management.
+* GitHub Actions: Continuous Integration and automated checks.
+* Google Fonts: Inter font family for typography.
 
-## 📋 Usage
+📱 Screenshots
 
-### Adding Tasks
-1. Type your task in the input field
-2. Click "Add Task" or press Enter
-3. Your task appears in the list below
+Desktop View
 
-### Managing Tasks
-- **Complete**: Click the checkbox next to any task
-- **Edit**: Click the edit icon (✏️) to modify the task text
-- **Delete**: Click the delete icon (🗑️) to remove the task
+Professional task management interface with task creation, categories, priorities, and filtering.
 
-### Viewing Statistics
-The stats section shows:
-- **Total Tasks**: All tasks you've created
-- **Completed**: Tasks you've finished
-- **Pending**: Tasks still to be done
+Mobile View
 
-## 💡 Learning Outcomes
+Fully responsive design that adapts to different screen sizes.
+
+🏃 Quick Start
+
+Prerequisites
+
+* A modern web browser.
+* Git (optional, for cloning the repository).
+
+Installation
+
+1. Clone the repository:
+
+git clone https://github.com/thomas-more-devops/taskflow-10-IADI3.git
+
+2. Navigate to the project directory:
+
+cd taskflow-10-IADI3
+
+3. Open index.html in your web browser.
+
+No build process or additional dependencies are required.
+
+Start managing your tasks immediately!
+
+📋 Usage
+
+Adding Tasks
+
+1. Type your task in the input field.
+2. Click “Add Task” or press Enter.
+3. Your task appears in the task list.
+
+Managing Tasks
+
+* Complete: Click the checkbox next to a task.
+* Edit: Use the edit option to modify the task.
+* Delete: Use the delete option to remove a task.
+
+Organizing Tasks
+
+* Categories: Organize tasks into Work, Personal, Shopping, or other available categories.
+* Priority: Assign High, Medium, or Low priority.
+* Due Dates: Set deadlines to keep track of upcoming tasks.
+
+Searching and Filtering
+
+* Search: Find tasks by entering text.
+* Status Filter: Display all, pending, or completed tasks.
+* Category Filter: Filter tasks according to their category.
+* Combined Filters: Apply search and filtering together.
+
+Viewing Statistics
+
+The statistics section displays:
+
+* Total Tasks: All tasks you have created.
+* Completed: Tasks you have finished.
+* Pending: Tasks that still need attention.
+
+💡 Learning Outcomes
 
 Through this project, students learn:
-- **Git Version Control**: Basic Git commands (add, commit, push, pull)
-- **GitHub Collaboration**: Team workflows and pull requests
-- **Professional Documentation**: README writing and code comments
-- **Modern Web Development**: HTML5, CSS3, and JavaScript ES6+
-- **Responsive Design**: Mobile-first CSS and flexible layouts
-- **Data Persistence**: Local Storage API usage
-- **User Experience**: Intuitive interface design and accessibility
-- **Project Management**: Issue tracking and project organization
 
-## 🎯 Learning Objectives
+* Git Version Control: Basic Git commands and branching strategies.
+* GitHub Collaboration: Team workflows, code reviews, and pull requests.
+* Professional Documentation: README writing and code documentation.
+* Modern Web Development: HTML5, CSS3, and JavaScript ES6+.
+* Responsive Design: Mobile-friendly layouts.
+* Data Persistence: Local Storage API.
+* User Experience: Interface design and accessibility.
+* Continuous Integration: Automated workflows using GitHub Actions.
+* Project Management: Issue tracking, milestones, and project organization.
+
+🎯 Learning Objectives
 
 This project demonstrates:
-- Modern HTML5 semantic markup
-- CSS3 advanced features (Grid, Flexbox, animations)
-- JavaScript ES6+ features (classes, arrow functions, template literals)
-- Local Storage API for data persistence
-- Responsive web design principles
-- Progressive enhancement
-- Accessibility best practices
 
-## 📁 Project Structure
+* Modern HTML5 semantic markup.
+* CSS3 advanced features, including Grid, Flexbox, and animations.
+* JavaScript ES6+ features.
+* Local Storage API for data persistence.
+* Responsive web design principles.
+* Progressive enhancement.
+* Accessibility best practices.
+* Collaborative development using Git and GitHub.
+* Basic CI pipeline implementation.
 
-```
-taskflow/
-├── index.html              # Main HTML file
-├── styles/
-│   └── main.css           # All CSS styles
-├── scripts/
-│   └── app.js             # Application JavaScript
-├── docs/
-│   ├── SETUP.md           # Installation guide
-│   ├── FEATURES.md        # Feature documentation
-│   ├── ARCHITECTURE.md    # Technical documentation
-│   └── CONTRIBUTING.md    # Contributing guidelines
+📁 Project Structure
+
+taskflow-10-IADI3/
 ├── .github/
-│   └── pull_request_template.md  # PR template
-├── .gitignore             # Git ignore rules
-├── LICENSE                # MIT license
-└── README.md              # This file
-```
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── workflows/
+│   │   └── ci.yml
+│   └── pull_request_template.md
+├── docs/
+│   ├── SETUP.md
+│   ├── FEATURES.md
+│   ├── ARCHITECTURE.md
+│   └── CONTRIBUTING.md
+├── scripts/
+│   └── app.js
+├── styles/
+│   └── main.css
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── index.html
+├── LICENSE
+├── README.md
+└── .gitignore
 
-## 🛠️ Development Workflow
+🛠️ Development Workflow
 
-```bash
-# Daily development workflow
-git pull origin main                    # Get latest changes
-git checkout -b feature/feature-name    # Create feature branch
-# Make your changes to the code
-git add .                              # Stage changes
-git commit -m "feat: description"     # Commit with conventional message
-git push origin feature/feature-name   # Push to remote
-# Create Pull Request on GitHub for review
-```
+We use feature branches and pull requests to manage development.
 
-## 📈 Performance Metrics
+# Get the latest changes
+git pull origin main
+# Create a feature branch
+git checkout -b feature/feature-name
+# Make your changes
+# Stage changes
+git add .
+# Commit with a conventional message
+git commit -m "feat: describe your changes"
+# Push your branch
+git push origin feature/feature-name
+# Create a Pull Request on GitHub
 
-- **Load Time**: <2 seconds on 3G connection
-- **Lighthouse Score**: 95+ across all categories
-- **Browser Support**: All modern browsers (Chrome 90+, Firefox 88+, Safari 14+)
-- **Mobile Performance**: Fully responsive design with touch-friendly interactions
-- **Accessibility**: WCAG 2.1 AA compliant
+All changes should be reviewed before being merged into the main branch.
 
-## 🚀 Deployment
+📈 Performance and Compatibility
 
-### GitHub Pages
-1. Push your code to a GitHub repository
-2. Go to Settings → Pages
-3. Select source: "Deploy from branch"
-4. Choose "main" branch
-5. Your app will be live at `https://thomas-more-devops.github.io/taskflow-10-IADI3`
+* Browser Support: Modern browsers, including Chrome, Firefox, Safari, and Edge.
+* Responsive Design: Supports desktop, tablet, and mobile screen sizes.
+* Performance: Lightweight application without a build process or external runtime dependencies.
+* Accessibility: Uses semantic HTML and accessibility-related attributes.
 
-### Local Development
-Simply open `index.html` in any modern web browser. No server required!
+🚀 Deployment
 
-## 🌟 Key Features Explained
+GitHub Pages
 
-### Local Storage Integration
-Tasks are automatically saved to your browser's local storage, ensuring persistence across sessions:
+TaskFlow is deployed using GitHub Pages.
 
-```javascript
-// Automatic saving after every change
+To configure deployment:
+
+1. Push your code to the GitHub repository.
+2. Navigate to Settings → Pages.
+3. Select Deploy from a branch.
+4. Choose the main branch.
+5. Save the configuration.
+
+Your application will be available at:
+
+https://thomas-more-devops.github.io/taskflow-10-IADI3
+
+Local Development
+
+Simply open index.html in any modern web browser.
+
+No local server or build process is required.
+
+🌟 Key Features Explained
+
+Local Storage Integration
+
+Tasks are stored in the browser’s local storage, allowing them to persist across browser sessions.
+
+// Example of saving tasks
 saveTasks() {
     localStorage.setItem('taskflow_tasks', JSON.stringify(this.tasks));
 }
-```
 
-### Responsive Design
-Mobile-first CSS approach with breakpoints for optimal viewing:
+Task Categories
 
-```css
-@media (max-width: 768px) {
-    .input-container {
-        flex-direction: column;
-    }
-}
-```
+Categories help users organize tasks into different groups, making task management easier.
 
-### Smooth Animations
-CSS transitions and keyframe animations for delightful user experience:
+Priority Management
 
-```css
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-```
+Priority levels allow users to distinguish between important and less urgent tasks:
 
-## 🎨 Design Principles
+* 🔴 High
+* 🟡 Medium
+* 🟢 Low
 
-### Color Palette
-- **Primary**: #667eea (Modern blue gradient)
-- **Secondary**: #764ba2 (Complementary purple)
-- **Success**: #48bb78 (Green for completed tasks)
-- **Warning**: #ed8936 (Orange for notifications)
-- **Error**: #e53e3e (Red for alerts)
+Due Date Management
 
-### Typography
-- **Font Family**: Inter (Google Fonts)
-- **Hierarchy**: Clear heading structure with proper font weights
-- **Readability**: Optimal line height and letter spacing
+Users can assign deadlines to tasks to keep track of upcoming responsibilities.
 
-### User Experience
-- **Intuitive Interface**: Clear visual hierarchy and familiar patterns
-- **Immediate Feedback**: Real-time notifications and visual confirmations
-- **Error Prevention**: Input validation and confirmation dialogs
-- **Accessibility**: Semantic HTML and proper ARIA attributes
+Search and Filtering
 
-## 🔧 Advanced Features
+Search and filtering help users quickly locate tasks based on descriptions, status, and categories.
 
-### Keyboard Shortcuts
-- **Enter**: Add new task when input is focused
-- **Tab**: Navigate through interface elements
-- **Space**: Toggle task completion (when focused)
+🎨 Design Principles
 
-### Data Export (Future Enhancement)
-```javascript
-exportTasks() {
-    const dataStr = JSON.stringify(this.tasks, null, 2);
-    const dataBlob = new Blob([dataStr], {type: 'application/json'});
-    // Download as JSON file
-}
-```
+Color Palette
 
-### Statistics Tracking
-Real-time task statistics with daily productivity metrics:
-- Tasks created today
-- Tasks completed today
-- Overall completion rate
-- Productivity trends
+* Primary: #667eea (Modern blue gradient)
+* Secondary: #764ba2 (Complementary purple)
+* Success: #48bb78 (Green for completed tasks)
+* Warning: #ed8936 (Orange for notifications)
+* Error: #e53e3e (Red for alerts)
 
-## 🤝 Contributing
+Typography
 
-We welcome contributions from students and developers! Please see our [Contributing Guidelines](docs/CONTRIBUTING.md) for detailed instructions.
+* Font Family: Inter (Google Fonts)
+* Hierarchy: Clear heading structure and font weights.
+* Readability: Appropriate line height and spacing.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+User Experience
+
+* Intuitive Interface: Clear visual hierarchy.
+* Immediate Feedback: Visual feedback for user interactions.
+* Error Prevention: Input validation and error handling.
+* Accessibility: Semantic HTML and ARIA attributes.
+
+🔧 Advanced Features
+
+Keyboard Navigation
+
+* Enter: Add a new task when the input is focused.
+* Tab: Navigate through interface elements.
+* Space: Toggle task completion when the relevant control is focused.
+
+Data Export
+
+TaskFlow includes task export functionality for downloading task data.
+
+Statistics Tracking
+
+The application provides task statistics, including:
+
+* Total tasks.
+* Completed tasks.
+* Pending tasks.
+
+🤝 Contributing
+
+We welcome contributions from students and developers!
+
+Please read our Contributing Guidelines before submitting changes.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Commit your changes using conventional commit messages.
+5. Push your branch.
+6. Open a Pull Request for review.
 
 For more details, check:
-- [Setup Guide](docs/SETUP.md) - Installation and development setup
-- [Architecture Documentation](docs/ARCHITECTURE.md) - Technical implementation details
-- [Feature Documentation](docs/FEATURES.md) - Comprehensive feature list
 
-### Commit Message Convention
-```
+* Setup Guide
+* Architecture Documentation
+* Feature Documentation
+* Contributing Guidelines
+
+Commit Message Convention
+
 feat: add new feature
 fix: resolve bug
 docs: update documentation
 style: formatting changes
 refactor: code restructuring
-test: add tests
+test: add or update tests
 chore: maintenance tasks
-```
 
-## 🧪 Testing
+🧪 Testing
 
-### Manual Testing Checklist
-- [ ] Add new task
-- [ ] Edit existing task
-- [ ] Mark task as complete
-- [ ] Delete task
-- [ ] Verify persistence after page reload
-- [ ] Test responsive design on different screen sizes
-- [ ] Validate accessibility with screen reader
+Manual Testing Checklist
 
-### Browser Compatibility
-- ✅ Chrome 80+ (Recommended)
-- ✅ Firefox 75+
-- ✅ Safari 13+
-- ✅ Edge 80+
+* Add a new task.
+* Edit an existing task.
+* Mark a task as complete.
+* Delete a task.
+* Verify persistence after reloading the page.
+* Assign a category to a task.
+* Change task priority.
+* Set a due date.
+* Search for tasks.
+* Filter tasks by status.
+* Filter tasks by category.
+* Test combined search and filtering.
+* Test responsive design on different screen sizes.
 
-## 📚 Resources
+Continuous Integration
 
-### Learning Materials
-- [MDN Web Docs](https://developer.mozilla.org/) - Comprehensive web development documentation
-- [JavaScript.info](https://javascript.info/) - Modern JavaScript tutorial
-- [CSS-Tricks](https://css-tricks.com/) - CSS techniques and best practices
+GitHub Actions automatically runs the configured CI workflow when relevant repository events occur.
 
-### Design Inspiration
-- [Dribbble](https://dribbble.com/tags/task_management) - Task management UI designs
-- [Behance](https://www.behance.net/) - Web design inspiration
+The pipeline includes:
 
-## 📝 License
+* Code quality checks.
+* Basic HTML and CSS validation.
+* Repository and file checks.
+* Build validation.
+* Security-related checks.
 
-This project is open source and available under the [MIT License](LICENSE).
+📚 Resources
 
-```
-MIT License
+Learning Materials
 
-Copyright (c) 2024 TaskFlow
+* MDN Web Docs - Comprehensive web development documentation.
+* JavaScript.info - Modern JavaScript tutorial.
+* CSS-Tricks - CSS techniques and best practices.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Design Inspiration
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
+* Dribbble - Task management UI designs.
+* Behance - Web design inspiration.
 
-## 📞 Course Support
+📝 License
 
-### Getting Help
-- **Instructor**: [Instructor Name](mailto:instructor@example.com)
-- **Course Materials**: Available on course platform
-- **Office Hours**: Tuesdays & Thursdays 2-4 PM
-- **Discussion Forum**: [Course Forum Link]
+This project is open source and available under the MIT License.
 
-### Technical Support
-If you have any questions or need help:
-- 📧 Open an issue on GitHub
-- 📖 Check our [comprehensive documentation](docs/)
-- 💬 Review the inline code comments
-- 🎓 Consult the course materials
-- 👥 Ask teammates during collaborative exercises
+📞 Course Support
 
-## 🏆 Achievements
+Getting Help
+
+* Instructor: Contact your course instructor.
+* Course Materials: Available on the course platform.
+* Discussion: Ask questions through the course discussion channels.
+
+Technical Support
+
+If you have questions or need help:
+
+* 📧 Open an issue on GitHub.
+* 📖 Check the project documentation.
+* 💬 Review the inline code comments.
+* 👥 Ask teammates during collaborative exercises.
+
+🏆 Achievements
 
 This TaskFlow application demonstrates:
-- **Modern Web Standards**: Using the latest HTML5, CSS3, and ES6+ features
-- **Best Practices**: Following industry-standard development patterns
-- **User-Centered Design**: Focusing on usability and accessibility
-- **Performance**: Optimized for fast loading and smooth interactions
-- **Maintainability**: Clean, well-documented, and structured code
 
-## 🎯 Future Enhancements
+* Modern Web Standards: HTML5, CSS3, and JavaScript ES6+.
+* Best Practices: Professional development workflows.
+* User-Centered Design: Focus on usability and accessibility.
+* Maintainability: Clean and structured code.
+* Collaboration: Team-based GitHub development.
+* Automation: Continuous Integration using GitHub Actions.
+* Release Management: Versioning and release documentation.
 
-Potential improvements for version 2.0. Each team member owns one feature:
-- [ ] **Task Categories**: Color-coded categories (Work, Personal, Shopping) — @SadmanUddin
-- [ ] **Due Dates**: Calendar integration and deadline reminders — @Aiborfr
-- [ ] **Priority Levels**: High, Medium, Low priority sorting — @LibanAbdullahi
-- [ ] **Search & Filter**: Advanced task filtering capabilities — @mehmetmetinerdemli
-- [ ] **Dark Mode**: Toggle between light and dark themes
-- [ ] **Collaboration**: Share tasks with team members
-- [ ] **Sync**: Cloud synchronization across devices
-- [ ] **Offline Mode**: Service worker for offline functionality
+🎯 Future Enhancements
 
-## 🙏 Acknowledgments
+Potential improvements for future versions:
 
-- **Inter Font**: Beautiful typography by Google Fonts
-- **Icons**: Unicode emoji set for consistent cross-platform display
-- **Inspiration**: Modern task management applications like Todoist, Things, and Any.do
-- **Community**: Open source contributors and web development community
+* Dark Mode: Toggle between light and dark themes.
+* Collaboration: Share tasks with team members.
+* Cloud Sync: Synchronize tasks across devices.
+* Offline Mode: Support offline functionality using service workers.
+* Notifications: Reminders for upcoming deadlines.
 
-## 🏆 Contributors
+🙏 Acknowledgments
+
+* Inter Font: Typography by Google Fonts.
+* Icons: Unicode emoji set.
+* Inspiration: Modern task management applications.
+* Community: Open-source contributors and the web development community.
+* Thomas More: Course instructors and fellow students.
+
+🏆 Contributors
 
 Thanks to all the students and developers who contributed to this project:
 
-### Course Contributors (Week 2 - Git Fundamentals)
-- [@LibanAbdullahi](https://github.com/LibanAbdullahi) - Documentation improvements and setup guide
-- [@SadmanUddin](https://github.com/SadmanUddin) - CSS enhancements and responsive design
-- [@Aiborfr](https://github.com/Aiborfr) - JavaScript functionality and error handling
-- [@mehmetmetinerdemli](https://github.com/mehmetmetinerdemli) - Testing, quality assurance, and project management
+Course Contributors (Week 2 - Git Fundamentals)
 
-### How to Become a Contributor
-1. Complete the [setup instructions](docs/SETUP.md)
-2. Pick an issue from our [project board](https://github.com/thomas-more-devops/taskflow-10-IADI3/projects)
-3. Follow our [contributing guidelines](docs/CONTRIBUTING.md)
-4. Submit a pull request for review
+* @LibanAbdullahi - Documentation improvements and setup guide.
+* @SadmanUddin - CSS enhancements and responsive design.
+* @Aiborfr - JavaScript functionality and error handling.
+* @mehmetmetinerdemli - Testing, quality assurance, and project management.
 
-## 🔄 Version History
+How to Become a Contributor
 
-See [CHANGELOG.md](CHANGELOG.md) for the detailed version history, and the
-[Releases page](https://github.com/thomas-more-devops/taskflow-10-IADI3/releases)
-for downloadable versions.
+1. Complete the setup instructions.
+2. Pick an issue from our GitHub Issues.
+3. Follow our contributing guidelines.
+4. Submit a pull request for review.
 
-### v1.1.0 (Current)
-- 🔍 Search tasks by text, filtering as you type
-- 🗂️ Task categories with colour-coded badges and category filtering
-- 🎚️ Filter by status: All, Pending, Completed
-- 📄 Pull request template, contributing guidelines and code of conduct
+🔄 Version History
 
-### v1.0.0
-- ✨ Initial release with core functionality
-- 🎨 Modern, responsive design
-- 💾 Local storage persistence
-- 📊 Basic statistics tracking
-- 🔧 Complete CRUD operations
-- 🛡️ Hardened error handling and input validation
+See CHANGELOG.md for the detailed version history and the GitHub Releases page for published versions.
 
----
+v2.0.0 - Enhanced Task Management
 
-**Happy Task Managing! 🎉**
+* ⭐ Task priority system with High, Medium, and Low levels.
+* 📅 Due dates for tasks.
+* 🗂️ Task categories with colour-coded badges.
+* 🔍 Search tasks by text.
+* 🎚️ Filtering by status and category.
+* ✨ Improved task management experience.
 
-Built with ❤️ using modern web technologies.
+v1.1.0 - Feature Release
 
-*"Productivity is not about being busy, it's about being effective."*
+* 🔍 Search tasks by text.
+* 🎚️ Filter tasks by status.
+* 🗂️ Task categories.
+* 📄 Pull request template.
+* 📖 Contributing guidelines and code of conduct.
 
----
+v1.0.0 - Initial Release
 
-## Getting Started with Git
+* ✨ Core task management functionality.
+* 🎨 Modern, responsive design.
+* 💾 Local storage persistence.
+* 📊 Basic statistics tracking.
+* 🛡️ Error handling and input validation.
 
-This project is perfect for learning Git version control:
 
-1. **Initialize Repository**:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: initial TaskFlow application"
-   ```
-
-2. **Connect to GitHub**:
-   ```bash
-   git remote add origin https://github.com/thomas-more-devops/taskflow-10-IADI3.git
-   git push -u origin main
-   ```
-
-3. **Enable GitHub Pages**:
-   - Go to repository Settings → Pages
-   - Select "Deploy from a branch"
-   - Choose "main" branch
-   - Your live app will be available at your GitHub Pages URL
-
-Ready to start your DevOps journey with TaskFlow! 🚀
-
-Issue templates for bug reports and feature requests are available when opening a new issue.
