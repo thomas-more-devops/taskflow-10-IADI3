@@ -10,58 +10,44 @@
  * - Search tasks by description
  * - Filter tasks by completion status
  * - Filter tasks by category
- * - Persist tasks and categories in Local Storage
+ * - Store tasks and categories through the TaskFlow API
  * - Support legacy tasks without categories
  */
 
 class TaskFlow {
   constructor () {
-    // Preserve the startup error handling from the main branch.
-    try {
-      this.storageKey = 'taskflow_tasks'
-      this.counterKey = 'taskflow_counter'
+    this.categories = ['Work', 'Personal', 'Shopping']
 
-      this.categories = ['Work', 'Personal', 'Shopping']
+    // Ordered most urgent first; the index doubles as the sort rank.
+    this.priorities = ['High', 'Medium', 'Low']
+    this.defaultPriority = 'Medium'
 
-      // Ordered most urgent first; the index doubles as the sort rank.
-      this.priorities = ['High', 'Medium', 'Low']
+    this.activeCategory = 'All'
+    this.activePriority = 'All'
+    this.searchQuery = ''
+    this.currentFilter = 'all'
+    this.currentDueDateFilter = 'all'
 
-      // Applied to tasks saved before priorities existed.
-      this.defaultPriority = 'Medium'
-
-      // Category, priority, search and status filters.
-      this.activeCategory = 'All'
-      this.activePriority = 'All'
-      this.searchQuery = ''
-      this.currentFilter = 'all'
-      this.currentDueDateFilter = 'all'
-
-      this.tasks = this.loadTasks()
-      this.taskIdCounter = this.getNextTaskId()
-
-      this.initializeApp()
-      this.bindEvents()
-      this.renderTasks()
-      this.updateStats()
-      this.setDefaultDueDate()
-    } catch (error) {
-      console.error('TaskFlow failed to start:', error)
-
-      this.showNotification(
-        'TaskFlow failed to start. Please reload the page.',
-        'error'
-      )
-
-      throw error
-    }
+    this.tasks = []
+    this.mutationPending = false
+    this.tasksAvailable = false
   }
 
   // ========================================
   // Initialization
   // ========================================
 
-  initializeApp () {
-    console.log('TaskFlow initialized successfully.')
+  async initializeApp () {
+    this.tasks = await this.loadTasks()
+    this.tasksAvailable = true
+    this.bindEvents()
+    this.refreshTasks()
+    this.setDefaultDueDate()
+  }
+
+  refreshTasks () {
+    this.renderTasks()
+    this.updateStats()
   }
 
   /**
@@ -192,7 +178,7 @@ class TaskFlow {
   /**
      * Creates a task using the description and selected category.
      */
-  addTask () {
+  async addTask () {
     const taskInput = this.getElement('taskInput')
     const categoryInput = this.getElement('taskCategory')
     const priorityInput = this.getElement('taskPriority')
@@ -243,31 +229,18 @@ class TaskFlow {
       return
     }
 
-    const newTask = {
-      id: this.taskIdCounter++,
-      text: taskText,
-      category,
-      priority,
-      dueDate: dueDate || null,
-      completed: false,
-      createdAt: new Date().toISOString(),
-      completedAt: null
-    }
-
-    this.tasks.push(newTask)
-
-    this.saveTasks()
-    this.renderTasks()
-    this.updateStats()
-
-    taskInput.value = ''
-    this.setDefaultDueDate()
-    taskInput.focus()
-
-    this.showNotification(
-      'Task added successfully!',
-      'success'
-    )
+    await this.changeTasks(async () => {
+      const task = await this.requestTasks('POST', '', {
+        title: taskText,
+        category,
+        priority,
+        dueDate: dueDate || null
+      })
+      this.tasks.push(this.fromApiTask(task))
+      taskInput.value = ''
+      this.setDefaultDueDate()
+      taskInput.focus()
+    }, 'Task added successfully!')
   }
 
   // ========================================
@@ -277,7 +250,7 @@ class TaskFlow {
   /**
      * Deletes a task by ID.
      */
-  deleteTask (id) {
+  async deleteTask (id) {
     const task = this.tasks.find((item) => item.id === id)
 
     if (!task) {
@@ -285,16 +258,10 @@ class TaskFlow {
       return
     }
 
-    this.tasks = this.tasks.filter((item) => item.id !== id)
-
-    this.saveTasks()
-    this.renderTasks()
-    this.updateStats()
-
-    this.showNotification(
-      'Task deleted successfully!',
-      'success'
-    )
+    await this.changeTasks(async () => {
+      await this.requestTasks('DELETE', '/' + id)
+      this.tasks = this.tasks.filter((item) => item.id !== id)
+    }, 'Task deleted successfully!')
   }
 
   // ========================================
@@ -304,7 +271,7 @@ class TaskFlow {
   /**
      * Toggles a task's completion status.
      */
-  toggleTask (id) {
+  async toggleTask (id) {
     const task = this.tasks.find((item) => item.id === id)
 
     if (!task) {
@@ -312,15 +279,11 @@ class TaskFlow {
       return
     }
 
-    task.completed = !task.completed
-
-    task.completedAt = task.completed
-      ? new Date().toISOString()
-      : null
-
-    this.saveTasks()
-    this.renderTasks()
-    this.updateStats()
+    const completed = !task.completed
+    await this.changeTasks(() => this.updateTask(id, {
+      completed,
+      completedAt: completed ? new Date().toISOString() : null
+    }))
   }
 
   // ========================================
@@ -330,7 +293,7 @@ class TaskFlow {
   /**
      * Allows the user to edit a task's description.
      */
-  editTask (id) {
+  async editTask (id) {
     const task = this.tasks.find((item) => item.id === id)
 
     if (!task) {
@@ -363,15 +326,9 @@ class TaskFlow {
       return
     }
 
-    task.text = updatedText
-
-    this.saveTasks()
-    this.renderTasks()
-    this.updateStats()
-
-    this.showNotification(
-      'Task updated successfully!',
-      'success'
+    await this.changeTasks(
+      () => this.updateTask(id, { title: updatedText }),
+      'Task updated successfully!'
     )
   }
 
@@ -752,10 +709,6 @@ class TaskFlow {
             `${pendingTasks} pending`
   }
 
-  // ========================================
-  // Local Storage
-  // ========================================
-
   updateDueDateStats () {
     const dueDateStats = document.getElementById('dueDateStats')
     const today = new Date().toISOString().split('T')[0]
@@ -787,111 +740,85 @@ class TaskFlow {
         `
   }
 
-  /**
-     * Saves tasks and their categories to Local Storage.
-     */
-  saveTasks () {
-    try {
-      localStorage.setItem(
-        this.storageKey,
-        JSON.stringify(this.tasks)
-      )
+  // ========================================
+  // Task API
+  // ========================================
 
-      localStorage.setItem(
-        this.counterKey,
-        String(this.taskIdCounter)
-      )
+  async requestTasks (method, suffix = '', data) {
+    const options = { method }
+    if (data !== undefined) {
+      options.headers = { 'Content-Type': 'application/json' }
+      options.body = JSON.stringify(data)
+    }
 
-      return true
-    } catch (error) {
-      console.error('Could not save tasks:', error)
+    const response = await fetch('/api/tasks' + suffix, options)
+    if (!response.ok) {
+      throw new Error(method + ' /api/tasks' + suffix + ' failed (' + response.status + ')')
+    }
 
-      this.showNotification(
-        'Could not save changes. Check your browser storage settings.',
-        'error'
-      )
+    return response.status === 204 ? null : response.json()
+  }
 
-      return false
+  fromApiTask (task) {
+    if (!task || !Number.isSafeInteger(task.id) ||
+        typeof task.title !== 'string' || typeof task.completed !== 'boolean') {
+      throw new Error('Invalid task returned by the API.')
+    }
+
+    const matchOption = (options, value) =>
+      typeof value === 'string' && options.find(option => option.toLowerCase() === value.toLowerCase())
+
+    return {
+      ...task,
+      text: task.title,
+      category: matchOption(this.categories, task.category) || task.category,
+      priority: matchOption(this.priorities, task.priority) || task.priority,
+      dueDate: task.dueDate || null,
+      completedAt: task.completedAt || null
     }
   }
 
-  /**
-     * Loads saved tasks.
-     * Legacy tasks without categories remain compatible.
-     */
-  loadTasks () {
-    try {
-      const savedTasks = localStorage.getItem(this.storageKey)
-
-      if (!savedTasks) {
-        return []
-      }
-
-      const parsedTasks = JSON.parse(savedTasks)
-
-      if (!Array.isArray(parsedTasks)) {
-        console.warn('Saved tasks data is not an array.')
-        return []
-      }
-
-      return parsedTasks
-        .filter((task) => this.isValidTask(task))
-        .map((task) => ({
-          ...task,
-          createdAt: task.createdAt || new Date().toISOString(),
-          completedAt: task.completedAt || null,
-          dueDate: task.dueDate || null
-        }))
-    } catch (error) {
-      console.error('Could not load saved tasks:', error)
-      return []
-    }
-  }
-
-  /**
-     * Checks whether a saved task contains required properties.
-     */
-  isValidTask (task) {
-    return (
-      task !== null &&
-            typeof task === 'object' &&
-            Number.isFinite(task.id) &&
-            typeof task.text === 'string' &&
-            typeof task.completed === 'boolean'
-    )
-  }
-
-  /**
-     * Finds the next available task ID.
-     */
-  getNextTaskId () {
-    let storedCounter = 1
-
-    try {
-      const savedCounter = localStorage.getItem(this.counterKey)
-
-      if (savedCounter !== null) {
-        const parsedCounter = Number(savedCounter)
-
-        if (
-          Number.isSafeInteger(parsedCounter) &&
-                    parsedCounter > 0
-        ) {
-          storedCounter = parsedCounter
-        }
-      }
-    } catch (error) {
-      console.warn(
-        'Could not read the saved task counter:',
-        error
-      )
+  async loadTasks () {
+    const tasks = await this.requestTasks('GET')
+    if (!Array.isArray(tasks)) {
+      throw new Error('Invalid task list returned by the API.')
     }
 
-    const largestExistingId = this.tasks.reduce((largest, task) => {
-      return Math.max(largest, task.id)
-    }, 0)
+    return tasks.map(task => this.fromApiTask(task))
+  }
 
-    return Math.max(storedCounter, largestExistingId + 1)
+  async updateTask (id, changes) {
+    const task = this.fromApiTask(await this.requestTasks('PUT', '/' + id, changes))
+    this.tasks = this.tasks.map(item => item.id === id ? task : item)
+  }
+
+  async changeTasks (change, successMessage) {
+    if (!this.tasksAvailable) {
+      this.showNotification('The task list is unavailable. Reload the page to try again.', 'error')
+      return
+    }
+    if (this.mutationPending) return
+
+    this.mutationPending = true
+    try {
+      await change()
+      this.refreshTasks()
+      if (successMessage) this.showNotification(successMessage, 'success')
+    } catch (error) {
+      console.error('Task change could not be confirmed:', error)
+      // A failed response can still follow a successful server write.
+      try {
+        this.tasks = await this.loadTasks()
+        this.refreshTasks()
+        this.showNotification('Could not confirm the change. The task list was refreshed from the server.', 'error')
+      } catch (reloadError) {
+        console.error('Could not refresh tasks:', reloadError)
+        this.tasksAvailable = false
+        this.showNotification('Could not confirm the change or refresh tasks. Reload the page before making changes.', 'error')
+      }
+    } finally {
+      this.mutationPending = false
+    }
   }
 
   // ========================================
@@ -923,14 +850,16 @@ class TaskFlow {
     }
   }
 
-  clearAllTasks () {
-    if (confirm('Are you sure you want to delete ALL tasks? This cannot be undone.')) {
-      this.tasks = []
-      this.saveTasks()
-      this.renderTasks()
-      this.updateStats()
-      this.showNotification('All tasks cleared!', 'success')
-    }
+  async clearAllTasks () {
+    if (!confirm('Are you sure you want to delete ALL tasks? This cannot be undone.')) return
+
+    await this.changeTasks(async () => {
+      const tasks = await this.loadTasks()
+      for (const task of tasks) {
+        await this.requestTasks('DELETE', '/' + task.id)
+      }
+      this.tasks = await this.loadTasks()
+    }, 'Tasks cleared successfully!')
   }
 
   getTaskStats () {
@@ -1030,12 +959,14 @@ class TaskFlow {
 let taskFlow
 
 if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
     try {
       taskFlow = new TaskFlow()
       window.taskFlow = taskFlow
+      await taskFlow.initializeApp()
     } catch (error) {
       console.error('TaskFlow could not start:', error)
+      taskFlow.showNotification('Could not load tasks from the server. Reload the page to try again.', 'error')
     }
   })
 }
