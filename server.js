@@ -53,6 +53,11 @@ app.put('/api/tasks/:id', (req, res) => {
   }
 });
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 app.listen(PORT, () => {
   console.log(`TaskFlow server running on port ${PORT}`);
 });
