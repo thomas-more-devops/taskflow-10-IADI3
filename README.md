@@ -37,7 +37,7 @@ Core Task Management
 * ✅ Mark Complete: Check off completed tasks.
 * ✅ Edit Tasks: Modify existing task descriptions.
 * ✅ Delete Tasks: Remove tasks you no longer need.
-* ✅ Persistent Storage: Tasks are saved locally in your browser.
+* ✅ Persistent Storage: Tasks are stored by the backend API (in memory on the server).
 * ✅ Task Statistics: View total, completed, and pending tasks.
 * ✅ Responsive Design: Works on desktop, tablet, and mobile devices.
 * ✅ Modern UI: Clean interface with smooth animations.
@@ -77,24 +77,58 @@ Fully responsive design that adapts to different screen sizes.
 
 Prerequisites
 
-* A modern web browser.
-* Git (optional, for cloning the repository).
+* Docker Desktop installed and running (recommended), or Node.js 22+ to run it directly.
+* Git, to clone the repository.
 
-Installation
+### How to run with Docker (recommended)
 
-1. Clone the repository:
+1. Clone the repository and go into it:
 
+```bash
 git clone https://github.com/thomas-more-devops/taskflow-10-IADI3.git
-
-2. Navigate to the project directory:
-
 cd taskflow-10-IADI3
+```
 
-3. Open index.html in your web browser.
+2. Build the image:
 
-No build process or additional dependencies are required.
+```bash
+docker build -t taskflow:1.1 .
+```
 
-Start managing your tasks immediately!
+3. Run the container:
+
+```bash
+docker run -d -p 3000:3000 --name taskflow-app taskflow:1.1
+```
+
+4. Open http://localhost:3000 in your browser.
+
+5. Check that the app is healthy:
+
+```bash
+curl http://localhost:3000/health
+# {"status":"ok"}
+```
+
+6. View the logs or stop the app:
+
+```bash
+docker logs taskflow-app
+docker stop taskflow-app && docker rm taskflow-app
+```
+
+If port 3000 is already in use, map another host port, for example `-p 3001:3000`, and open http://localhost:3001 instead.
+
+### How to run without Docker
+
+```bash
+npm install
+npm start
+```
+
+Then open http://localhost:3000.
+
+Note: opening `public/index.html` directly in the browser no longer works, because the app needs the backend API.
 
 📋 Usage
 
